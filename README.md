@@ -7,6 +7,7 @@ Use [Claude.ai](https://claude.ai) with this special skill to generate professio
 - **No design skills needed** — just describe your architecture in plain English
 - **Iterate quickly** — ask Claude to add components, change layouts, or update styles
 - **Share easily** — output is a single HTML file, no special software required
+- **Export anywhere** — convert to PNG, PDF, or SVG with one command
 
 ![Version](https://img.shields.io/badge/version-1.0-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
@@ -239,6 +240,52 @@ The generated HTML structure:
   </body>
 </html>
 ```
+
+## 📤 Export to PNG, PDF, or SVG
+
+Want to share your diagram as an image or document? Use the included export tool.
+
+### Setup
+
+```bash
+cd tools
+pip install -r requirements.txt
+playwright install chromium
+```
+
+### Usage
+
+```bash
+# Export to PNG (high-res screenshot)
+python tools/export.py diagram.html --format png
+
+# Export to PDF (A3 landscape)
+python tools/export.py diagram.html --format pdf
+
+# Export to standalone SVG
+python tools/export.py diagram.html --format svg
+
+# Export all formats at once
+python tools/export.py diagram.html --format all
+
+# Custom resolution (for presentations)
+python tools/export.py diagram.html --format png --width 3840 --scale 3
+```
+
+### Options
+
+| Flag | Description | Default |
+|------|-------------|---------|
+| `--format`, `-f` | `png`, `pdf`, `svg`, or `all` | `png` |
+| `--output`, `-o` | Custom output path | Auto-generated |
+| `--width`, `-w` | Viewport width (px) | 1920 |
+| `--scale`, `-s` | Device scale factor | 2 |
+
+### Requirements
+
+- Python 3.8+
+- [Playwright](https://playwright.dev/python/) (for PNG/PDF)
+- [BeautifulSoup4](https://pypi.org/project/beautifulsoup4/) (for SVG extraction)
 
 ## 🔧 Technical Details
 
