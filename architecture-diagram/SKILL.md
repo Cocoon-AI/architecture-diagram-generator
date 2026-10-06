@@ -1,11 +1,20 @@
 ---
 name: architecture-diagram
-description: Create polished dark-themed architecture diagrams as self-contained HTML+SVG files. Use when the user asks for system, infrastructure, cloud, security, or network topology diagrams.
+description: Create polished light- or dark-themed architecture diagrams as self-contained HTML+SVG files. Use when the user asks for system, infrastructure, cloud, security, network topology, or Python application architecture diagrams.
 ---
 
 # Architecture Diagram Skill
 
 Create professional technical architecture diagrams as self-contained HTML files with inline SVG graphics and CSS styling.
+
+### Theme Selection
+
+Before generating a diagram, ask the user which visual theme to use: **Light** or **Dark**, unless the user has already specified a theme in the request. Do not silently choose a theme when neither is specified.
+
+- **Light mode:** start from `resources/template-light.html`.
+- **Dark mode:** start from `resources/template-dark.html`.
+
+Treat the selected template as the source of truth for background, typography, component fills, borders, grid, toolbar styling, print/export background, and SVG text colors. Preserve the chosen template's theme consistently throughout the generated architecture diagram.
 
 > **Version 1.1** · MIT License · Authored by [Cocoon AI](mailto:hello@cocoon-ai.com)
 
